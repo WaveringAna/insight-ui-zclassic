@@ -1,0 +1,44 @@
+<section class="container">
+<div data-ng-include src="'views/includes/connection.html'"></div>
+<section data-ng-controller="BlocksController" data-ng-init="list()" style="height:250px">
+  <div class="row">
+    <div class="col-xs-12 col-md-9">
+      <div class="page-header">
+        <h1>
+          <span translate>Blocks</span>
+          <small><span translate>by date:</span> {{detail}} {{before}}</small>
+        </h1>
+      </div>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th translate>Height</th>
+            <th translate>Timestamp</th>
+            <th class="text-right" translate>Transactions</th>
+            <th class="text-right hidden-xs" translate>Mined by</th>
+            <th class="text-right" translate>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-show="loading">
+          <td colspan="5"><span translate>Waiting for blocks...</span> <span class="loader-gif"></span></td>
+        </tr>
+        <tr class="fader" data-ng-repeat='b in blocks'>
+          <td><a href="block/{{b.hash}}">{{b.height}}</a></td>
+          <td>{{b.time * 1000 | date:'medium'}}</td>
+          <td class="text-right">{{b.txlength}}</td>
+          <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
+          <td class="text-right">{{b.size}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div data-ng-if="pagination.more">
+        <a class="btn btn-primary" href="blocks-date/{{pagination.current}}" data-ng-show="{{before}}">Lastest block from date</a>
+        <a class="btn btn-primary" href="blocks-date/{{pagination.current}}/{{pagination.moreTs}}">Older blocks from this date</a>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center text-muted" data-ng-show="!blocks.length && !loading"
+    translate>No blocks yet.</h2>
+</section>
+</section>

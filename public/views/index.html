@@ -1,0 +1,93 @@
+<div class="alert alert-danger" data-ng-show="flashMessage">
+   {{$root.flashMessage}}
+</div>
+<div data-ng-include src="'views/includes/connection.html'"></div>
+<section data-ng-controller="IndexController" data-ng-init="index()">
+<div class="container-fluid">
+   <div class="row">
+      <div id="search-form-mobile" class="visible-xs" data-ng-include src="'views/includes/search.html'"></div>
+      <section class="background-image-holder fadeIn container-fluid" style='transform: translate3d(0px, 0px, 0px); background-color: transparent; background-image: url("http://zclassic.org/img/bgecl5.jpg"); background-repeat: repeat; background-attachment: scroll; background-clip: border-box; background-origin: padding-box; background-position: initial; background-size: auto auto; top: -55px;   padding-top:100px; padding-bottom:100px; width:3000px; margin-left: -900px;'>
+         <img alt="Background" class="background-image" src="img/bgecl5.jpg" style="display: none;">
+         <div class="container">
+            <div class="row" data-ng-controller="StatusController">
+               <div class="col-md-3 col-md-pull-2 col-gray">
+                  <center><h3>ZClassic Price</h3></center>
+                  <p style="border-top: 1px solid #aaa; border-bottom: none;border-left: none;border-right: none;display: block;text-align: center;">${{$root.currency.bitstamp}}</p>
+               </div>
+               <div class="col-md-1 col-md-pull-1">
+                  <a href="http://zclassic.org"><img src="https://raw.githubusercontent.com/z-classic/z-classic.github.io/master/img/logo-dark.png" style="margin-left: 30px"></a>
+               </div>
+               <div class="col-md-3 col-md-push-6 col-gray">
+                  <center><h3>Difficulty</h3></center>
+                  <span data-ng-init="getStatus('Info ')">
+                     <p style="border-top: 1px solid #aaa; border-bottom: none;border-left: none;border-right: none;display: block;text-align: center;">{{info.difficulty}}</p>
+                  </span>
+               </div>
+            </div>
+            <br><br>
+            <span class="hidden-xs" style="color: black" data-ng-include src="'views/includes/search.html '"></span> 
+         </div>
+      </section>
+      <section class="container">
+      <br><br>
+      <!--<h2>This explorer will be down for maintenance at 3/4/17 from 12am est to 8 am est</h2>-->
+      <br><br>
+   </div>
+   <div class="container">
+      <h1 translate>Latest Blocks</h1>
+      <table class="table table-hover table-striped">
+         <thead>
+            <tr>
+               <th translate>Height</th>
+               <th translate>Age</th>
+               <th class="text-right"><span class="ellipsis" translate>Transactions</span></th>
+               <th class="text-right hidden-xs"><span class="ellipsis" translate>Mined by</span></th>
+               <th class="text-right" translate>Size</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr data-ng-show="!blocks.length">
+               <td colspan="4" translate>Waiting for blocks...</td>
+            </tr>
+            <tr class="fader" data-ng-repeat='b in blocks '>
+               <td>
+                  <a href="block/{{b.hash}}">{{b.height}}</a>
+               </td>
+               <td><span class="ellipsis">{{humanSince(b.time)}}</span></td>
+               <td class="text-right">{{b.txlength}}</td>
+               <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
+               <td class="text-right">{{b.size}}</td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="btn-more">
+         <a href="blocks" class="btn btn-default" translate>See all blocks</a>
+      </div>
+      <h2 translate>Latest Transactions</h2>
+      <table class="table table-hover table-striped" style="table-layout: fixed;">
+         <thead>
+            <tr>
+               <th>Hash</th>
+               <th class="text-right" translate>Value Out</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr data-ng-show="!txs.length">
+               <td colspan="3" translate>Waiting for transactions...</td>
+            </tr>
+            <tr class="fader" data-ng-repeat='tx in txs '>
+               <td>
+                  <a class="ellipsis" href="tx/{{tx.txid}}">{{tx.txid}}</a>
+               </td>
+               <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut)}}</span></td>
+            </tr>
+         </tbody>
+      </table>
+      <br>
+      <div>
+         <h2>Known bugs</h2>
+         <p>A small percentage of addresses do not show any transactions and show up as unparsed with transactions</p>
+      </div>
+   </div>
+</div>
+
