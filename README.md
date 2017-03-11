@@ -17,6 +17,7 @@ cd zclassic-explorer
 ../node_modules/bitcore-node-zcash/bin/bitcore-node install aayanl/insight-api-zclassic aayanl/insight-ui-zclassic
 nvm use v4; ./node_modules/bitcore-node-zcash/bin/bitcore-node start
 ```
+Get the memo script from https://gist.github.com/aayanl/e2a757eaa9866e83c454d115cc214a89 and have it save the memos to public/js/memos.txt
 
 Open a web browser to `http://localhost:3001/insight/`
 
