@@ -11,12 +11,11 @@ Please see the guide at [https://bitcore.io/guides/full-node](https://bitcore.io
 To manually install all of the necessary components, you can run these commands:
 
 ```bash
-npm install -g str4d/bitcore-node-zcash
-bitcore-node create mynode
+npm install str4d/bitcore-node-zcash
+./node_modules/bitcore-node-zcash/bin/bitcore-node create zclassic-explorer
 cd mynode
-bitcore-node install aayanl/insight-api-zclassic 
-bitcore-node install aayanl/insight-ui-zclassic
-bitcore-node start
+../node_modules/bitcore-node-zcash/bin/bitcore-node install aayanl/insight-api-zclassic aayanl/insight-ui-zclassic
+nvm use v4; ./node_modules/bitcore-node-zcash/bin/bitcore-node start
 ```
 
 Open a web browser to `http://localhost:3001/insight/`
