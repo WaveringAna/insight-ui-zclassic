@@ -13,7 +13,7 @@ To manually install all of the necessary components, you can run these commands:
 ```bash
 npm install str4d/bitcore-node-zcash
 ./node_modules/bitcore-node-zcash/bin/bitcore-node create zclassic-explorer
-cd mynode
+cd zclassic-explorer
 ../node_modules/bitcore-node-zcash/bin/bitcore-node install aayanl/insight-api-zclassic aayanl/insight-ui-zclassic
 nvm use v4; ./node_modules/bitcore-node-zcash/bin/bitcore-node start
 ```
