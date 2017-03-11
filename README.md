@@ -1,6 +1,6 @@
 # Insight UI
 
-A Bitcoin blockchain explorer web application service for [Bitcore Node](https://github.com/bitpay/bitcore-node) using the [Insight API](https://github.com/str4d/insight-api-zcash).
+A Bitcoin blockchain explorer web application service for [Bitcore Node](https://github.com/bitpay/bitcore-node) using the [Insight API](https://github.com/aayanl/insight-api-zclassic).
 
 ## Quick Start
 
@@ -11,11 +11,11 @@ Please see the guide at [https://bitcore.io/guides/full-node](https://bitcore.io
 To manually install all of the necessary components, you can run these commands:
 
 ```bash
-npm install -g bitcore-node
+npm install -g str4d/bitcore-node-zcash
 bitcore-node create mynode
 cd mynode
-bitcore-node install insight-api
-bitcore-node install insight-ui
+bitcore-node install aayanl/insight-api-zclassic 
+bitcore-node install aayanl/insight-ui-zclassic
 bitcore-node start
 ```
 
