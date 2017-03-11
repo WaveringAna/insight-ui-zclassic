@@ -12,7 +12,7 @@
             <div class="row" data-ng-controller="StatusController">
                <div class="col-md-3 col-md-pull-2 col-gray">
                   <center><h3>ZClassic Price</h3></center>
-                  <p style="border-top: 1px solid #aaa; border-bottom: none;border-left: none;border-right: none;display: block;text-align: center;">${{$root.currency.bitstamp}}</p>
+                  <p style="border-top: 1px solid #aaa; border-bottom: none;border-left: none;border-right: none;display: block;text-align: center;" id="price" onload="start()">loading</p>
                </div>
                <div class="col-md-1 col-md-pull-1">
                   <a href="http://zclassic.org"><img src="https://raw.githubusercontent.com/z-classic/z-classic.github.io/master/img/logo-dark.png" style="margin-left: 30px"></a>
@@ -25,7 +25,7 @@
                </div>
             </div>
             <br><br>
-            <span class="hidden-xs" style="color: black" data-ng-include src="'views/includes/search.html '"></span> 
+            <span class="hidden-xs" style="color: black" data-ng-include src="'views/includes/search.html '"></span>
          </div>
       </section>
       <section class="container">
@@ -90,4 +90,3 @@
       </div>
    </div>
 </div>
-
